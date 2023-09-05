@@ -1,0 +1,255 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.List" %>
+<%@ page import="br.jdbc.dao.produtoDAO" %>
+<%@ page import="br.jdbc.dto.produtoDTO" %>
+<%
+Connection conn = null;
+try {
+    String url = "jdbc:mysql://localhost:3306/registro";
+    String user = "root";
+    String password = "";
+    Class.forName("com.mysql.jdbc.Driver");
+    conn = DriverManager.getConnection(url, user, password);
+} catch (SQLException e) {
+    e.printStackTrace();
+} catch (ClassNotFoundException e) {
+    e.printStackTrace();
+}
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/bootstrap.min.js">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/botao.css">
+    <link rel="stylesheet" href="../css/produto.css">
+   
+    <script type="text/javascript">
+        // JavaScript Love Heart Cursor code...
+    </script>
+    <style>
+        .produtos {
+    display: inline-block;
+    margin: 0 15px 30px 0;
+    padding: 15px;
+    border: 4px solid #e0c8d0;
+    border-radius: 8%;
+    background-color: white;
+    width: calc(33.33% - 20px); /* Calcula a largura com margens */
+    box-sizing: border-box;
+    position: relative;
+}
+
+
+        .img {
+            border-radius: 10%;
+            width: 100%;
+        }
+
+        h2 {
+            font-size: 30px;
+            font-family: serif;
+            color: grey;
+            margin-top: 0;
+        }
+
+        p {
+            font-size: 20px;
+            font-family: serif;
+            color: rgb(167, 67, 167);
+            margin: 5px 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .botao {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #ffffff;
+    background-color: #edb8c8;
+    font-size: 20px;
+    border: 1px solid #edb8c8;
+    border-radius: 12px;
+    padding: 10px 37px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.botao:hover {
+    color: #edb8c8;
+    background-color: #ffffff;
+}
+
+.border {
+    border: 9px solid #E5DCDF;
+}
+        
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="blur">
+        <div class="container">
+          <a class="navbar-brand" href="#">Lumiere</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="./home.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./produto.html" target="_blank">Produtos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./contatos.html" target="_blank">Contatos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./sobrenos.html" target="_blank">Sobre Nós</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><img src="../img/8324223_ui_essential_app_avatar_profile_icon.png" id="imgnav"></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><img src="../img/9025885_shopping_cart_icon.png" id="imgnav"></a>
+              </li>
+            </ul>
+          </div>
+     
+        </div>
+      
+      </nav>
+      
+       <br><br><br><br><center>
+<div >
+      <h1>Nossos Produtos</h1>
+    <p>Aroma e aconchego
+    <p>Cuide de quem mais merece: você.<p>
+</div>
+</center>
+
+    <br><br>
+
+
+<div class="container">
+    <%
+    List<produtoDTO> listaProdutos = new produtoDAO(conn).listarTodos();
+    for (produtoDTO produto : listaProdutos) {
+    %>
+    <div class="produtos">
+        <img src="../img/high-angle-natural-soap-plant-arrangement.jpg" alt="" />
+       <br>
+        <h2><%=produto.getNomeProduto()%></h2>
+        
+        <p><%=produto.getTipoProduto()%></p>
+        <p><strong>Preço:</strong> <%=produto.getPreco()%></p>
+        <br> <br>
+       
+        <a href="#" class="botao">Comprar </a>
+       
+
+    </div>
+    <% } %>
+</div>
+
+</body>
+<%
+if (conn != null) {
+    try {
+        conn.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+%>
+
+
+
+
+
+
+
+
+<div class="whats">
+    <a href="https://wa.me/5521979249199" target="_blank">
+    <img src="../img/whats1.png" width="60" alt="Fale Conosco pelo Whatsapp" title="Fale Conosco pelo Whatsapp" />
+  </a>
+  </div>
+  
+
+
+
+
+
+
+ 
+
+
+  <footer class="new_footer_area bg_color">
+    <div class="new_footer_top">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+                        <h3 class="f-title f_600 t_color f_size_18">Início</h3>
+                        <ul class="list-unstyled f_list">
+                            <li><a href="./home.html">Home</a></li>
+                            <li><a href="./produto.html" target="_blank">Produtos</a></li>
+                            
+                          
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                        <h3 class="f-title f_600 t_color f_size_18">Informações</h3>
+                        <ul class="list-unstyled f_list">
+                            <li><a href="./sobrenos.html" target="_blank">Sobre Nós</a></li>
+                            <li><a href="./contatos.html" target="_blank">Contatos</a></li>
+                          
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <h3 class="f-title f_600 t_color f_size_18">Sobre nós</h3>
+                  <h3 class="f-title f_600 t_color f_size_18">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Corrupti, magnam ipsam quis natus cumque ad nulla laudantium ex reiciendis
+                      consequatur quasi blanditiis dolorum culpa repudiandae consectetur asperiores officia nobis excepturi?
+                    </h3>
+                    
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <img src="../img/64c13544e31a508f877ce665b7e659f7-linha-flores-roxas-em-aquarela.png" width="300px"> 
+                </div>
+                
+            </div>
+        </div>
+        <div class="footer_bg">
+            <div class="footer_bg_one"></div>
+            <div class="footer_bg_two"></div>
+        </div>
+    </div>
+   
+</footer>
+
+
+</html>

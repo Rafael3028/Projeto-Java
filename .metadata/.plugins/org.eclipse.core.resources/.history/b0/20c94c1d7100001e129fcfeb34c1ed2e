@@ -1,0 +1,102 @@
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            
+            background-color: black;
+        }
+        .box{
+            color: #000;
+            position: absolute;
+            top: 46%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color:#E5DCDF;
+            padding: 15px;
+            border-radius: 15px;
+            width: 450px;
+            height: 570px;
+            margin-top: 2%;
+        }    
+        fieldset{
+            border: 3px solid #a77fa3;
+            border-radius: 10px;
+            height: 520px;
+        }
+        legend{
+            width: 190px;
+            height: 20px;
+            font-size: 15px;
+            border: 1px solid #a77fa3;
+            padding: 10px;
+            text-align: center;
+            background-color: #a77fa3;
+            border-radius: 8px;
+            color: white;
+            
+        }
+        .inputBox {
+            padding: 3px 5px 30px;
+            margin-bottom:-7%;
+            margin-left: 1%;
+            margin-right: -1%
+        }
+        .inputo{
+            background-color: #E5DCDF;
+            color: black;
+            position: relative;
+            height: 30px;
+            width: 400px;
+            border: none;
+            border-bottom: 1px solid purple;
+            margin-top: 5px;
+            
+        }
+        .inputUser{
+            background: none;
+            border: none;
+            border-bottom: 1px solid white;
+            outline: none;
+            color: white;
+            font-size: 15px;
+            width: 100%;
+            letter-spacing: 2px; 
+            
+        }
+        .labelInput{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            pointer-events: none;
+            transform: .5px;
+            color: white;
+            background-color: #4F4F4F;
+        }
+        .inputUser:focus ~ .labelInput,
+        .inputUser:valid ~ .labelInput{
+            top: -20px;
+            font-size: 12px;
+            color: white;
+        }
+       
+        #data_nascimento{
+            border: none;
+            padding: 8px;
+            border-radius: 10px;
+            outline: none;
+            font-size: 15px;
+             
+        }
+        #submit{
+            background-color: #a77fa3;
+            width: 200px;
+            border: none;
+            padding: 15px;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-left: 100px;
+
+        }
+        #submit:hover{
+            background-color: #BA55D3;
+        }

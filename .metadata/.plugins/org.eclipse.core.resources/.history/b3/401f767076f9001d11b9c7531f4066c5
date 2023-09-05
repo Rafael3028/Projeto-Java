@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+</head>
+<body>
+    <div>
+        <h1>Login</h1>
+        <form action="LoginServlet" method="POST">
+            <input type="text" name="email" placeholder="Email">
+            <br><br>
+            <input type="password" name="senha" placeholder="Senha">
+            <br><br>
+            <a class="a2" href="../html/cliente.jsp">Não possui conta? Cadastre-se aqui.</a>
+            <br><br>
+            <input class="inputSubmit" type="submit" name="submit" value="Entrar">
+        </form>
+    </div>
+</body>
+</html>

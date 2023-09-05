@@ -1,0 +1,32 @@
+package br.jdbc;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import br.jdbc.dto.produtoDTO;
+import br.jdbc.dao.produtoDAO;
+
+/**
+ * Servlet implementation class EditarProdutoServlet
+ */
+@WebServlet("/EditarProdutoServlet")
+public class EditarProdutoServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    private produtoDAO produtoDAO = new produtoDAO(null);
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int idProduto = Integer.parseInt(request.getParameter("id"));
+
+        produtoDTO produto = produtoDAO.buscarPorId(idProduto);
+
+        request.setAttribute("produto", produto);
+        request.getRequestDispatcher("editarProduto.jsp").forward(request, response);
+    }
+}
+

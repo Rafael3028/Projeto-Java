@@ -1,0 +1,54 @@
+package br.jdbc.dto;
+
+public class produtoDTO {
+	private int idProduto;
+	private String nomeProduto;
+	private int volume;
+	private String preco;
+	private String tipoProduto;
+	private String nomeImagem;
+	
+	public int getIdProduto() {
+		return idProduto;
+	}
+	public void setIdProduto(int idProduto) {
+		this.idProduto = idProduto;
+	}
+	public String getNomeProduto() {
+		return nomeProduto;
+	}
+	public void setNomeProduto(String nomeProduto) {
+		this.nomeProduto = nomeProduto;
+	}
+	public int getVolume() {
+		return volume;
+	}
+	public void setVolume(int volume) {
+		this.volume = volume;
+	}
+	public String getPreco() {
+		return preco;
+	}
+	public void setPreco(String preco) {
+		this.preco = preco;
+	}
+	public String getTipoProduto() {
+		return tipoProduto;
+	}
+	public void setTipoProduto(String tipoProduto) {
+		this.tipoProduto = tipoProduto;
+	}
+	
+	public String toString() {
+		return getIdProduto() + "" + getNomeProduto() + "" + getVolume() + "" + getPreco() + "" + getTipoProduto();
+	}
+	
+	public String getNomeImagem() {
+        return nomeImagem;
+    }
+
+    public void setNomeImagem(String nomeImagem) {
+        this.nomeImagem = nomeImagem;
+    }
+}
+

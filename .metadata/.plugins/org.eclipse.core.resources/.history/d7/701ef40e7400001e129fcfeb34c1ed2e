@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Área Administrativa</title>
+ 
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Adicionar Produto</a></li>
+      <li><a href="#">Alterar Produto</a></li>
+    </ul>
+  </div>
+  
+  <!-- Conteúdo da página -->
+  
+  <script src="script.js"></script>
+
+ </body>
+</html>

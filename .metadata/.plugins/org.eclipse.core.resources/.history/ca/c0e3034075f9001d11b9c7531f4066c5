@@ -1,0 +1,132 @@
+package br.jdbc.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.annotation.WebServlet;
+
+import br.jdbc.ConexaoUtil;
+import br.jdbc.dto.loginDTO;
+
+@WebServlet("/Clienteservlet")
+public class loginDAO {
+	
+	public void inserir(br.jdbc.dto.loginDTO loginDTO) {
+		try {
+		
+		Connection connection = ConexaoUtil.getInstance().getConnection();
+		
+		String sql = "INSERT INTO clientes( emailCLiente, senhaCliente) VALUES(?, ?) ";
+		
+			PreparedStatement statement = connection.prepareStatement(sql);
+			
+			
+			statement.setString(1, loginDTO.getEmailCliente());
+			statement.setString(2, loginDTO.getSenhaCliente());
+			
+			
+			statement.execute();
+			connection.close();
+			
+			System.out.println("Inserido com sucesso");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void remover(int idCliente) {
+		try {
+			Connection connection = ConexaoUtil.getInstance().getConnection();
+			
+			String sql = "DELETE FROM clientes WHERE idCliente = ?";
+			
+			PreparedStatement statement = connection.prepareStatement(sql);
+			
+			statement.setInt(1, idCliente);
+			
+			statement.execute();
+			statement.close(); 
+			
+			System.out.println("Removido com sucesso");
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public List<loginDTO> listarTodos () {
+		List<loginDTO> listaClientes = new ArrayList<loginDTO>();
+		try {
+			Connection connection = ConexaoUtil.getInstance().getConnection();
+			
+			String sql = "SELECT * FROM clientes";
+			
+			PreparedStatement statement = connection.prepareStatement(sql);
+			
+			ResultSet resultset = statement.executeQuery();
+			
+			while(resultset.next()) {
+				loginDTO loginDTO = new loginDTO();
+				loginDTO.setIdCliente(resultset.getInt("idCliente"));				
+				loginDTO.setEmailCliente(resultset.getString("emailCliente"));
+				loginDTO.setSenhaCliente(resultset.getNString("senhaCliente"));
+				
+				listaClientes.add(loginDTO);
+			}
+			connection.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return listaClientes;
+	}
+	
+	
+	public void atualizar(loginDTO loginDTO) {
+		try {
+			Connection connection = ConexaoUtil.getInstance().getConnection();
+			
+			String sql = "UPDATE clientes SET emailCliente = ?, senhaCliente = ?,  WHERE idCliente = ?";
+				
+			PreparedStatement statement = connection.prepareStatement(sql);
+			
+			
+			
+			statement.setString(1, loginDTO.getEmailCliente());
+			statement.setString(2, loginDTO.getSenhaCliente());
+			statement.setInt(3, loginDTO.getIdCliente());
+			
+			statement.execute();
+			statement.close();
+			
+		System.out.println("Atualizado com sucesso");	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void main (String[] args) {
+		
+		loginDAO loginDAO = new loginDAO();
+	
+		List<loginDTO> listaClientes = new ArrayList<>();
+		
+		listaClientes = loginDAO.listarTodos ();
+		
+		for (int i = 0; i < listaClientes.size() ; i++ ) {
+			System.out.println(listaClientes.get(i));
+		}
+		
+		
+	}
+	
+	
+	
+}
+

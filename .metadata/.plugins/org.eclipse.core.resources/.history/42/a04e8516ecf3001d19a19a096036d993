@@ -1,0 +1,48 @@
+package br.jdbc;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+import br.jdbc.dao.produtoDAO;
+import br.jdbc.dto.produtoDTO;
+
+@WebServlet("/CadastrarProdutoServlet")
+public class CadastrarProdutoServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Obtenha os parâmetros do formulário
+        String nomeProduto = request.getParameter("nomeProduto");
+        int volume = Integer.parseInt(request.getParameter("volume"));
+        String preco = request.getParameter("preco");
+        String tipoProduto = request.getParameter("tipoProduto");
+
+        // Obter o arquivo de imagem enviado
+        Part imagemPart = request.getPart("imagem");
+        String nomeImagem = imagemPart.getSubmittedFileName();
+
+        // Salvar o arquivo de imagem em algum local
+
+        // Criar o objeto produtoDTO e definir os valores
+        produtoDTO produto = new produtoDTO();
+        produto.setNomeProduto(nomeProduto);
+        produto.setVolume(volume);
+        produto.setPreco(preco);
+        produto.setTipoProduto(tipoProduto);
+        produto.setNomeImagem(nomeImagem);
+
+        // Inserir o produto no banco de dados
+        produtoDAO dao = new produtoDAO(null);
+        dao.inserir(produto);
+
+        response.sendRedirect("listaProdutos.jsp"); // Redirecionar para a página de lista de produtos
+    }
+}
+
+Certifique-se de que a classe `CadastrarProdutoServlet` esteja fora da classe `ProdutoServlet`, mas ainda dentro do mesmo arquivo.
+
+
+}

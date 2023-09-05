@@ -1,0 +1,39 @@
+package br.jdbc;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import br.jdbc.dao.produtoDAO;
+import br.jdbc.dto.produtoDTO;
+
+@WebServlet("/EditarProdutoServlet")
+public class EditarProdutoServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    private produtoDAO produtoDAO = new produtoDAO(null);
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int idProduto = Integer.parseInt(request.getParameter("idProduto"));
+        String nomeProduto = request.getParameter("nomeProduto");
+        int volume = Integer.parseInt(request.getParameter("volume"));
+        String preco = request.getParameter("preco");
+        String tipoProduto = request.getParameter("tipoProduto");
+
+        produtoDTO produtoDTO = new produtoDTO();
+        produtoDTO.setIdProduto(idProduto);
+        produtoDTO.setNomeProduto(nomeProduto);
+        produtoDTO.setVolume(volume);
+        produtoDTO.setPreco(preco);
+        produtoDTO.setTipoProduto(tipoProduto);
+
+        produtoDAO.atualizar(produtoDTO);
+
+        // Redirecionar de volta para a página de listagem de produtos
+        response.sendRedirect("./admEditar.jsp");
+    }
+}

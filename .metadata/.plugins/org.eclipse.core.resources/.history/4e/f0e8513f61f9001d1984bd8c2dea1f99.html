@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="./cadastrarproduto.css">
+</head>
+<body>
+<div class="box">
+<form action = "ProdutoServlet" method="post">
+       <fieldset>
+            <legend><b>Cadastro dos produtos</b></legend>
+            <br>
+            <div class="inputBox">
+            <label>Nome do produto.</label><br>
+                 <input class="inputo" type="text" class="form-control" name="nomeProduto" placeholder="Insira o nome do produto" required>
+            </div>
+            <br><br>
+            <div class="inputBox">
+            <label>Quantidade no estoque.</label><br>
+                <input class="inputo" type="number" class="form-control" name="volume" placeholder="Insira a quantidade do produto no estoque">
+            </div>
+            <br><br>
+            <div class="inputBox">
+            <label>Valor do produto.</label><br>
+                <input class="inputo" type="text" class="form-control" name="preco" placeholder="Insira o valor do produto" required>
+            </div>
+            <br><br>
+            <div class="inputBox">
+            <label>Descrição do produto.</label><br>
+                <input class="inputo" type="text" class="form-control" name="tipoProduto" placeholder="Insira a descrição do produto">
+                <br><br>
+            <input type="submit" name="submit" id="submit" value="Cadastrar 🐈">
+            </div>
+            
+            
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

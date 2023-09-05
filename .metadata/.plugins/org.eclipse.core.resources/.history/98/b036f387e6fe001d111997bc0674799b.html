@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Cabeçalho omitido para manter o exemplo mais conciso -->
+</head>
+<body>
+    <h3>Editar Produto</h3>
+
+    <form action="AtualizarProdutoServlet" method="post">
+        <input type="hidden" name="idProduto" value="${produto.idProduto}">
+        <div>
+            <label for="nomeProduto">Nome do Produto:</label>
+            <input type="text" id="nomeProduto" name="nomeProduto" value="${produto.nomeProduto}" required>
+        </div>
+        <!-- Outros campos do formulário omitidos para manter o exemplo mais conciso -->
+        <button type="submit">Atualizar Produto</button>
+    </form>
+
+</body>
+</html>

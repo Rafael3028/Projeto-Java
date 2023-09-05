@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="box">
+<form action = "ProdutoServlet" method="post">
+        <fieldset>
+            <legend><b>Cadastro dos produtos</b></legend>
+            <br>
+            <div class="inputBox">
+            <label>Nome do produto.</label><br>
+                 <input class="inputo" type="text" class="form-control" name="nomeProduto" placeholder="Insira o nome do produto" required>
+            </div>
+            <br><br>
+            <div class="inputBox">
+            <label>Quantidade no estoque.</label><br>
+                <input class="inputo" type="number" class="form-control" name="volume" placeholder="Insira a quantidade do produto no estoque">
+            </div>
+            <br><br>
+            <div class="inputBox">
+            <label>Valor do produto.</label><br>
+                <input class="inputo" type="text" class="form-control" name="preco" placeholder="Insira o valor do produto" required>
+            </div>
+            <br><br>
+           <form action="cadastrarProduto.jsp" method="POST" enctype="multipart/form-data">
+    <!-- Restante do formulário -->
+    <label for="nomeImagem">Imagem:</label>
+    <input type="file" id="nomeImagem" name="nomeImagem">
+    <br>
+    <input type="submit" value="Cadastrar">
+</form>
+            <input type="submit" name="submit" id="submit" value="Cadastrar">
+            </div>
+            
+            
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

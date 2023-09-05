@@ -1,0 +1,23 @@
+.produtos {
+    display: inline-block;
+    margin: 0px 15px 0px 0px;
+    padding: 15px 15px 15px 15px;
+    border: 4px solid #e0c8d0;
+    border-radius: 10%;
+    background-color: white;
+}
+img{
+    border-radius: 10%;
+}
+/*comprar*/
+h1{
+    font-size: 60px;
+    font-family: serif;
+    color: grey;
+    text-shadow: 0 0 10 black;
+}
+p{
+    font-size: 25px;
+    font-family: serif;
+    color: rgb(167, 67, 167);
+}

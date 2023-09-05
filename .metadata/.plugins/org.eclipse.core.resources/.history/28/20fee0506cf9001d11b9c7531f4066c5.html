@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="./cadastrarproduto.css">
+</head>
+<body>
+
+	<fieldset>
+		<legend>
+			<b>Cadastro dos Clientes</b>
+		</legend>
+		<br>
+		<form action="../ClienteServlet" method="POST">
+			<div class="inputBox">
+				<label>Nome do Cliente.</label><br> <input class="inputo"
+					type="text" class="form-control" name="nomeCliente"
+					placeholder="Insira o nome do cliente" required>
+			</div>
+			<br>
+			<br>
+			<div class="inputBox">
+				<label>Email.</label><br> <input class="inputo" type="email"
+					class="form-control" name="emailCliente"
+					placeholder="Insira o email">
+			</div>
+			<br>
+			<br>
+			<div class="inputBox">
+				<label>Senha.</label><br> <input class="inputo" type="password"
+					class="form-control" name="senhaCliente"
+					placeholder="Insira a senha" required>
+			</div>
+			<br>
+			<br>
+			<div class="inputBox">
+				<label>Endereço.</label><br> <input class="inputo" type="text"
+					class="form-control" name="enderecoCliente"
+					placeholder="Insira o endereço"> <br>
+				<br>
+				<div class="inputBox">
+					<label>Telefone.</label><br> <input class="inputo"
+						type="number" class="form-control" name="telefoneCliente"
+						placeholder="Insira o telefone" required>
+				</div>
+				<br>
+				<br> <input type="submit" name="submit" id="submit"
+					value="Cadastrar">
+			</div>
+		</form>
+
+	</fieldset>
+
+</body>
+</html>
